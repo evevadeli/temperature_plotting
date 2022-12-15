@@ -18,12 +18,13 @@ def test_compute_mean():
     
     calc = tpl.compute_mean([])
     assert calc == None, "Test for empty list gives error"
-    
+
+@pytest.mark.skip(reason="Test is bad")
+def test_compute_mean_bad():
     # Failing test
     calc = tpl.compute_mean([0,10])
     assert calc == 2
     
-
 # Test function
 def test_create_name():
     calc = tpl.create_name(10)
