@@ -1,0 +1,41 @@
+import pytest, os
+
+import temperature_plotting as tpl
+
+def test_compute_mean():
+    calc = tpl.compute_mean([0,10,20])
+    assert calc == 10
+    assert type(calc) == float
+    
+    calc = tpl.compute_mean([-10,10])
+    assert calc == 0
+    
+    calc = tpl.compute_mean([0,10,0])
+    assert round(calc,4) == 3.3333, "Check that the average is roughly correct" # Do not add if you use pytest
+    
+    with pytest.raises(TypeError):
+        calc = tpl.compute_mean(["a","b","c"])
+    
+    calc = tpl.compute_mean([])
+    assert calc == None, "Test for empty list gives error"
+    
+
+# Test function
+def test_create_name():
+    calc = tpl.create_name(10)
+    assert calc == "plot_10.png"
+    assert type(calc) == str
+
+    calc = tpl.create_name(-10)
+    assert calc == "plot_-10.png"
+
+    with pytest.raises(TypeError):
+        calc = tpl.create_name("10")
+
+# Integration test
+def test_main():
+    tpl.main()
+    assert os.path.exists("plot_25.png")
+
+
+
