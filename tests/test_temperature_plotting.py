@@ -19,6 +19,10 @@ def test_compute_mean():
     calc = tpl.compute_mean([])
     assert calc == None, "Test for empty list gives error"
     
+    # Failing test
+    calc = tpl.compute_mean([0,10])
+    assert calc == 2
+    
 
 # Test function
 def test_create_name():
